@@ -24,6 +24,15 @@ class DockingStation
     @bikes << bike
   end
 
+  def release_broken_bike
+    @bikes.each do |bike|
+      unless bike.working?
+        return @bikes.delete(bike)
+      end
+    end
+    nil
+  end
+  
   private
 
   attr_reader :bikes
